@@ -1,0 +1,38 @@
+{
+    "name": "paddys/panic-lab-helper-core",
+    "description": "Helper for the game \"PanicLab\" by Gigamic",
+    "license": "MIT",
+    "keywords": [ "panic", "lab", "paniclab", "game", "gigamic" ],
+    "require": {
+        "php": "^7.3.0",
+        "symfony/dotenv": "4.2.*",
+        "symfony/flex": "^1.1",
+        "symfony/framework-bundle": "4.2.*",
+        "symfony/monolog-bundle": "^3.3",
+        "webmozart/assert": "^1.4"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "phpstan/phpstan": "^0.11.6",
+        "phpunit/phpunit": "^8"
+    },
+    "autoload": {
+        "psr-4": {
+            "PanicLabCore\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PanicLabCore\\Tests\\": "tests/"
+        }
+    },
+    "conflict": {
+        "symfony/symfony": "*"
+    },
+    "authors": [
+        {
+            "name": "Patrick Stahl",
+            "role": "Developer"
+        }
+    ]
+}

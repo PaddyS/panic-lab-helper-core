@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter type="collection" key="germ_colors">
+            <parameter>orange</parameter>
+            <parameter>blue</parameter>
+        </parameter>
+
+        <parameter type="collection" key="germ_styles">
+            <parameter>dotted</parameter>
+            <parameter>streaked</parameter>
+        </parameter>
+
+        <parameter type="collection" key="germ_sizes">
+            <parameter>thick</parameter>
+            <parameter>thin</parameter>
+        </parameter>
+
+        <parameter type="collection" key="switch_types">
+            <parameter>size</parameter>
+            <parameter>color</parameter>
+            <parameter>style</parameter>
+        </parameter>
+
+        <parameter type="collection" key="entry_colors">
+            <parameter>blue</parameter>
+            <parameter>red</parameter>
+            <parameter>yellow</parameter>
+        </parameter>
+
+        <parameter type="collection" key="entry_directions">
+            <parameter>left</parameter>
+            <parameter>right</parameter>
+        </parameter>
+
+        <parameter key="max_steps">10000</parameter>
+    </parameters>
+
+    <services>
+        <defaults autowire="true" autoconfigure="true" public="false" />
+
+        <prototype namespace="PanicLabCore\" resource="../src/*" exclude="../src/{Entity,Migrations,Tests}" />
+
+        <service id="PanicLabCore\Services\CalcService">
+            <argument type="service" id="PanicLabCore\Services\Handlers\TileHandlerCollector" />
+            <argument>%max_steps%</argument>
+        </service>
+
+        <service id="PanicLabCore\Services\Debug\Log\DebugLogger">
+            <argument type="service" id="logger"/>
+        </service>
+
+        <!-- Handlers -->
+        <service id="PanicLabCore\Services\Handlers\TileHandlerCollector">
+            <argument tag="app.tile_handler" type="tagged"/>
+        </service>
+
+        <service id="PanicLabCore\Services\Handlers\EntryTileHandler">
+            <tag name="app.tile_handler" />
+        </service>
+
+        <service id="PanicLabCore\Services\Handlers\GermTileHandler">
+            <tag name="app.tile_handler" />
+        </service>
+
+        <service id="PanicLabCore\Services\Handlers\SwitchTileHandler">
+            <tag name="app.tile_handler" />
+        </service>
+
+        <service id="PanicLabCore\Services\Handlers\VentTileHandler">
+            <tag name="app.tile_handler" />
+        </service>
+
+        <!-- Hydrators -->
+        <service id="PanicLabCore\Services\Hydrators\Hydrator" />
+
+        <service id="PanicLabCore\Services\Hydrators\HydrationCollector">
+            <argument tag="app.tile_hydrator" type="tagged"/>
+        </service>
+
+        <service id="PanicLabCore\Services\Hydrators\DiceHydrator">
+            <argument type="service" id="PanicLabCore\Services\Validators\DiceValidator" />
+        </service>
+
+        <service id="PanicLabCore\Services\Hydrators\EntryHydrator">
+            <argument type="service" id="PanicLabCore\Services\Validators\EntryValidator" />
+            <tag name="app.tile_hydrator" />
+        </service>
+
+        <service id="PanicLabCore\Services\Hydrators\GermHydrator">
+            <argument type="service" id="PanicLabCore\Services\Validators\GermValidator" />
+            <tag name="app.tile_hydrator" />
+        </service>
+
+        <service id="PanicLabCore\Services\Hydrators\SwitchHydrator">
+            <argument type="service" id="PanicLabCore\Services\Validators\SwitchValidator" />
+            <tag name="app.tile_hydrator" />
+        </service>
+
+        <service id="PanicLabCore\Services\Hydrators\VentHydrator">
+            <tag name="app.tile_hydrator" />
+        </service>
+
+        <!-- Validators -->
+        <service id="PanicLabCore\Services\Validators\DiceValidator">
+            <argument>%germ_colors%</argument>
+            <argument>%germ_styles%</argument>
+            <argument>%germ_sizes%</argument>
+            <argument>%entry_colors%</argument>
+            <argument>%entry_directions%</argument>
+        </service>
+
+        <service id="PanicLabCore\Services\Validators\EntryValidator">
+            <argument>%entry_colors%</argument>
+        </service>
+
+        <service id="PanicLabCore\Services\Validators\GermValidator">
+            <argument>%germ_colors%</argument>
+            <argument>%germ_styles%</argument>
+            <argument>%germ_sizes%</argument>
+        </service>
+
+        <service id="PanicLabCore\Services\Validators\SwitchValidator">
+            <argument>%switch_types%</argument>
+        </service>
+    </services>
+</container>

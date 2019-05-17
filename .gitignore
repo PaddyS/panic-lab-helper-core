@@ -1,0 +1,11 @@
+/var/
+/vendor/
+/bin/.phpunit
+/bin/phpunit
+
+/composer.lock
+/symfony.lock
+/.idea/
+
+/phpunit.xml
+.phpunit.result.cache
