@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PanicLabCore\Services\Debug\Log;
 
-use Psr\Log\LoggerInterface;
 use function json_encode;
+use Psr\Log\LoggerInterface;
 
 class DebugLogger implements DebugLoggerInterface
 {
@@ -18,9 +18,9 @@ class DebugLogger implements DebugLoggerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function logBefore(string $method, array $params) : void
+    public function logBefore(string $method, array $params): void
     {
         $this->logger->info(
             'Before \'' . $method . '\' with params: ' . json_encode($params)
@@ -28,9 +28,9 @@ class DebugLogger implements DebugLoggerInterface
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
-    public function logAfter(string $method, array $result) : void
+    public function logAfter(string $method, array $result): void
     {
         $this->logger->info(
             'After \'' . $method . '\' with result: ' . json_encode($result)

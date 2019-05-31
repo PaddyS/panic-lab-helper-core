@@ -18,12 +18,12 @@ class DiceHydrator implements HydratorInterface
         $this->diceValidator = $diceValidator;
     }
 
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         return true;
     }
 
-    public function hydrate(array $diceData) : Tile
+    public function hydrate(array $diceData): Tile
     {
         return new Dice(
             $diceData['germColor'],
@@ -34,7 +34,7 @@ class DiceHydrator implements HydratorInterface
         );
     }
 
-    public function validate(array $diceData) : void
+    public function validate(array $diceData): void
     {
         $this->diceValidator->validate($diceData);
     }

@@ -26,10 +26,10 @@ class GermValidator implements ValidatorInterface
     {
         $this->germColors = $germColors;
         $this->germStyles = $germStyles;
-        $this->germSizes  = $germSizes;
+        $this->germSizes = $germSizes;
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         Assert::keyExists($tile, 'additional');
 

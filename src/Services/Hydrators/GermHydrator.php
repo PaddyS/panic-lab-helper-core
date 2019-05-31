@@ -18,12 +18,12 @@ class GermHydrator implements HydratorInterface
         $this->germValidator = $germValidator;
     }
 
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         return $type === 'germ';
     }
 
-    public function hydrate(array $tile) : Tile
+    public function hydrate(array $tile): Tile
     {
         $additional = $tile['additional'];
 
@@ -34,7 +34,7 @@ class GermHydrator implements HydratorInterface
         );
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         $this->germValidator->validate($tile);
     }

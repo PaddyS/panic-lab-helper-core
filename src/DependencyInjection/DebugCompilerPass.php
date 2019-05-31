@@ -26,13 +26,13 @@ class DebugCompilerPass implements CompilerPassInterface
     /**
      * Overwrites the `CalcService` with its respective debug version `DebugCalcService`
      */
-    public function process(ContainerBuilder $container) : void
+    public function process(ContainerBuilder $container): void
     {
         if ($this->environment !== 'dev') {
             return;
         }
 
-        $serviceId    = CalcService::class;
+        $serviceId = CalcService::class;
         $debugService = new Definition(
             DebugCalcService::class,
             [

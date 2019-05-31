@@ -8,9 +8,9 @@ use PanicLabCore\Structs\Tile;
 
 interface HydratorInterface
 {
-    public function supports(string $type) : bool;
+    public function supports(string $type): bool;
 
-    public function hydrate(array $tile) : Tile;
+    public function hydrate(array $tile): Tile;
 
-    public function validate(array $tile) : void;
+    public function validate(array $tile): void;
 }

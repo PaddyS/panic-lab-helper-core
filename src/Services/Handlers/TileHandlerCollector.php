@@ -6,14 +6,13 @@ namespace PanicLabCore\Services\Handlers;
 
 use PanicLabCore\Structs\Step;
 use PanicLabCore\Structs\Target;
-use Traversable;
 
 class TileHandlerCollector implements TileHandlerCollectorInterface
 {
     /** @var TileHandlerInterface[] */
     private $tileHandlers;
 
-    public function __construct(Traversable $tileHandlers)
+    public function __construct(\Traversable $tileHandlers)
     {
         $this->tileHandlers = $tileHandlers;
     }
@@ -21,11 +20,11 @@ class TileHandlerCollector implements TileHandlerCollectorInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(array $tiles, Target $target, Step $stepStruct) : void
+    public function handle(array $tiles, Target $target, Step $stepStruct): void
     {
         foreach ($this->tileHandlers as $tileHandler) {
             $tile = $tiles[$stepStruct->getCurrentIndex()];
-            if (! $tileHandler->supports($tile)) {
+            if (!$tileHandler->supports($tile)) {
                 continue;
             }
 

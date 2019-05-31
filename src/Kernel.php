@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PanicLabCore;
 
-use Generator;
 use PanicLabCore\DependencyInjection\DebugCompilerPass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -22,7 +21,7 @@ class Kernel extends BaseKernel
     /** @var string */
     public $bundlesPath = '/config/bundles.php';
 
-    public function registerBundles() : Generator
+    public function registerBundles(): \Generator
     {
         $contents = require $this->getProjectDir() . $this->bundlesPath;
         foreach ($contents as $class => $envs) {
@@ -32,14 +31,14 @@ class Kernel extends BaseKernel
         }
     }
 
-    protected function build(ContainerBuilder $container) : void
+    protected function build(ContainerBuilder $container): void
     {
         $container->addCompilerPass(
             new DebugCompilerPass($this->getEnvironment())
         );
     }
 
-    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader) : void
+    protected function configureContainer(ContainerBuilder $container, LoaderInterface $loader): void
     {
         $container->addResource(new FileResource($this->getProjectDir() . $this->bundlesPath));
         $container->setParameter('container.dumper.inline_class_loader', true);
@@ -51,7 +50,7 @@ class Kernel extends BaseKernel
         $loader->load($confDir . '/{services}_' . $this->environment . self::CONFIG_EXTS, 'glob');
     }
 
-    protected function configureRoutes(RouteCollectionBuilder $routes) : void
+    protected function configureRoutes(RouteCollectionBuilder $routes): void
     {
     }
 }

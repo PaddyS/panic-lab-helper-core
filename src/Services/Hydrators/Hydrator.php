@@ -19,7 +19,7 @@ final class Hydrator
     /**
      * @return Tile[]
      */
-    public function hydrate(array $tiles) : array
+    public function hydrate(array $tiles): array
     {
         $tileStructs = [];
         foreach ($tiles as $tile) {

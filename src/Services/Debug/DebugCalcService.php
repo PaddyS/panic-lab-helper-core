@@ -27,7 +27,7 @@ class DebugCalcService extends CalcService
     /**
      * {@inheritdoc}
      */
-    public function calculate(array $tiles, Structs\Dice $diceResult) : Structs\GermTile
+    public function calculate(array $tiles, Structs\Dice $diceResult): Structs\GermTile
     {
         $this->debugLogger->logBefore('calculate', ['tiles' => $tiles, 'dice' => $diceResult]);
         $foundTile = parent::calculate($tiles, $diceResult);
@@ -36,7 +36,7 @@ class DebugCalcService extends CalcService
         return $foundTile;
     }
 
-    public function prepare(Structs\Dice $diceResult) : void
+    public function prepare(Structs\Dice $diceResult): void
     {
         $this->debugLogger->logBefore('prepare', ['tiles' => $this->tiles, 'dice' => $diceResult]);
         parent::prepare($diceResult);
@@ -46,7 +46,7 @@ class DebugCalcService extends CalcService
     /**
      * {@inheritdoc}
      */
-    public function reverseTiles() : void
+    public function reverseTiles(): void
     {
         $this->debugLogger->logBefore('reverseTiles', ['tiles' => $this->tiles]);
         parent::reverseTiles();
@@ -56,7 +56,7 @@ class DebugCalcService extends CalcService
     /**
      * {@inheritdoc}
      */
-    public function findStartIndex(string $entryColor) : int
+    public function findStartIndex(string $entryColor): int
     {
         $this->debugLogger->logBefore('findStartIndex', ['entryColor' => $entryColor]);
         $startIndex = parent::findStartIndex($entryColor);
@@ -68,7 +68,7 @@ class DebugCalcService extends CalcService
     /**
      * {@inheritdoc}
      */
-    public function isTargetTile(Structs\Tile $tile) : bool
+    public function isTargetTile(Structs\Tile $tile): bool
     {
         $this->debugLogger->logBefore('isTargetTile', ['searchedTile' => $tile, 'targetTile' => $this->target]);
         $isTargetTile = parent::isTargetTile($tile);

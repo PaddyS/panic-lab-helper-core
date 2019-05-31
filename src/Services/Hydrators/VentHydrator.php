@@ -9,17 +9,17 @@ use PanicLabCore\Structs\VentTile;
 
 class VentHydrator implements HydratorInterface
 {
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         return $type === 'vent';
     }
 
-    public function hydrate(array $tile) : Tile
+    public function hydrate(array $tile): Tile
     {
         return new VentTile();
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         // No validation necessary
     }

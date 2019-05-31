@@ -18,17 +18,17 @@ class SwitchHydrator implements HydratorInterface
         $this->switchValidator = $switchValidator;
     }
 
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         return $type === 'switch';
     }
 
-    public function hydrate(array $tile) : Tile
+    public function hydrate(array $tile): Tile
     {
         return new SwitchTile($tile['additional']['type']);
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         $this->switchValidator->validate($tile);
     }

@@ -21,21 +21,21 @@ class Step
     public function __construct(int $currentIndex, int $stepCount, int $maxStep)
     {
         $this->currentIndex = $currentIndex;
-        $this->stepCount    = $stepCount;
-        $this->maxStep      = $maxStep;
+        $this->stepCount = $stepCount;
+        $this->maxStep = $maxStep;
     }
 
-    public function getCurrentIndex() : int
+    public function getCurrentIndex(): int
     {
         return $this->currentIndex;
     }
 
-    public function getStepCount() : int
+    public function getStepCount(): int
     {
         return $this->stepCount;
     }
 
-    public function getMaxStep() : int
+    public function getMaxStep(): int
     {
         return $this->maxStep;
     }
@@ -43,7 +43,7 @@ class Step
     /**
      * @throws TooManyStepsException
      */
-    public function increase() : void
+    public function increase(): void
     {
         ++$this->stepCount;
 
@@ -54,7 +54,7 @@ class Step
         ++$this->currentIndex;
     }
 
-    public function checkForOverstep(int $totalCount) : void
+    public function checkForOverstep(int $totalCount): void
     {
         if ($this->currentIndex <= $totalCount - 1) {
             return;
@@ -63,7 +63,7 @@ class Step
         $this->currentIndex = 0;
     }
 
-    public function setCurrentIndex(int $currentIndex) : void
+    public function setCurrentIndex(int $currentIndex): void
     {
         $this->currentIndex = $currentIndex;
     }

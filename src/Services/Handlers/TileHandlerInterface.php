@@ -10,10 +10,10 @@ use PanicLabCore\Structs\Tile;
 
 interface TileHandlerInterface
 {
-    public function supports(Tile $tile) : bool;
+    public function supports(Tile $tile): bool;
 
     /**
      * @param Tile[] $tiles
      */
-    public function handle(array $tiles, Target $target, Step $stepStruct) : void;
+    public function handle(array $tiles, Target $target, Step $stepStruct): void;
 }

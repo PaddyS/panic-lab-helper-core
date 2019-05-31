@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace PanicLabCore\Services;
 
+use function array_reverse;
+use function count;
 use PanicLabCore\Services\Exceptions\EntryTileMissingException;
 use PanicLabCore\Services\Handlers\TileHandlerCollectorInterface;
 use PanicLabCore\Structs\Dice;
@@ -12,8 +14,6 @@ use PanicLabCore\Structs\GermTile;
 use PanicLabCore\Structs\Step;
 use PanicLabCore\Structs\Target;
 use PanicLabCore\Structs\Tile;
-use function array_reverse;
-use function count;
 use function sprintf;
 
 class CalcService implements CalcServiceInterface
@@ -39,13 +39,13 @@ class CalcService implements CalcServiceInterface
     public function __construct(TileHandlerCollectorInterface $tileHandler, int $maxSteps)
     {
         $this->tileHandlerCollector = $tileHandler;
-        $this->maxSteps             = $maxSteps;
+        $this->maxSteps = $maxSteps;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function calculate(array $tiles, Dice $diceResult) : GermTile
+    public function calculate(array $tiles, Dice $diceResult): GermTile
     {
         $this->tiles = $tiles;
 
@@ -54,13 +54,13 @@ class CalcService implements CalcServiceInterface
         return $this->step();
     }
 
-    public function prepare(Dice $diceResult) : void
+    public function prepare(Dice $diceResult): void
     {
         if ($diceResult->getEntryDirection() === 'left') {
             $this->reverseTiles();
         }
 
-        $this->target     = new Target(
+        $this->target = new Target(
             $diceResult->getGermColor(),
             $diceResult->getGermSize(),
             $diceResult->getGermStyle()
@@ -68,15 +68,15 @@ class CalcService implements CalcServiceInterface
         $this->stepStruct = new Step($this->findStartIndex($diceResult->getEntryColor()), 0, $this->maxSteps);
     }
 
-    public function reverseTiles() : void
+    public function reverseTiles(): void
     {
         $this->tiles = array_reverse($this->tiles);
     }
 
-    public function findStartIndex(string $entryColor) : int
+    public function findStartIndex(string $entryColor): int
     {
         foreach ($this->tiles as $tileIndex => $tile) {
-            if (! $tile instanceof EntryTile) {
+            if (!$tile instanceof EntryTile) {
                 continue;
             }
 
@@ -90,7 +90,7 @@ class CalcService implements CalcServiceInterface
         throw new EntryTileMissingException(sprintf('No entry tile with color \'%s\' in the set-up.', $entryColor));
     }
 
-    public function step() : GermTile
+    public function step(): GermTile
     {
         $this->stepStruct->increase();
         $this->stepStruct->checkForOverstep(count($this->tiles));
@@ -107,9 +107,9 @@ class CalcService implements CalcServiceInterface
         return $this->step();
     }
 
-    public function isTargetTile(Tile $tile) : bool
+    public function isTargetTile(Tile $tile): bool
     {
-        if (! $tile instanceof GermTile) {
+        if (!$tile instanceof GermTile) {
             return false;
         }
 

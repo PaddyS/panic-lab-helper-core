@@ -18,21 +18,21 @@ class GermTile extends Tile
     public function __construct(string $color, string $size, string $style)
     {
         $this->color = $color;
-        $this->size  = $size;
+        $this->size = $size;
         $this->style = $style;
     }
 
-    public function getColor() : string
+    public function getColor(): string
     {
         return $this->color;
     }
 
-    public function getSize() : string
+    public function getSize(): string
     {
         return $this->size;
     }
 
-    public function getStyle() : string
+    public function getStyle(): string
     {
         return $this->style;
     }

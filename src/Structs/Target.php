@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace PanicLabCore\Structs;
 
-use JsonSerializable;
 use function get_object_vars;
 
-class Target implements JsonSerializable
+class Target implements \JsonSerializable
 {
     /** @var string */
     protected $germColor;
@@ -21,41 +20,41 @@ class Target implements JsonSerializable
     public function __construct(string $germColor, string $germSize, string $germStyle)
     {
         $this->germColor = $germColor;
-        $this->germSize  = $germSize;
+        $this->germSize = $germSize;
         $this->germStyle = $germStyle;
     }
 
-    public function setGermColor(string $germColor) : void
+    public function setGermColor(string $germColor): void
     {
         $this->germColor = $germColor;
     }
 
-    public function setGermSize(string $germSize) : void
+    public function setGermSize(string $germSize): void
     {
         $this->germSize = $germSize;
     }
 
-    public function setGermStyle(string $germStyle) : void
+    public function setGermStyle(string $germStyle): void
     {
         $this->germStyle = $germStyle;
     }
 
-    public function getGermColor() : string
+    public function getGermColor(): string
     {
         return $this->germColor;
     }
 
-    public function getGermSize() : string
+    public function getGermSize(): string
     {
         return $this->germSize;
     }
 
-    public function getGermStyle() : string
+    public function getGermStyle(): string
     {
         return $this->germStyle;
     }
 
-    public function checkIfSame(GermTile $tile) : bool
+    public function checkIfSame(GermTile $tile): bool
     {
         if ($tile->getColor() !== $this->getGermColor()) {
             return false;
@@ -71,7 +70,7 @@ class Target implements JsonSerializable
     /**
      * @return string[]
      */
-    public function jsonSerialize() : array
+    public function jsonSerialize(): array
     {
         return get_object_vars($this);
     }

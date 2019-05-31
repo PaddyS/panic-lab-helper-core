@@ -9,10 +9,10 @@ interface DebugLoggerInterface
     /**
      * @param mixed[] $params
      */
-    public function logBefore(string $method, array $params) : void;
+    public function logBefore(string $method, array $params): void;
 
     /**
      * @param mixed[] $result
      */
-    public function logAfter(string $method, array $result) : void;
+    public function logAfter(string $method, array $result): void;
 }

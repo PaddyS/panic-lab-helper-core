@@ -13,5 +13,5 @@ interface TileHandlerCollectorInterface
     /**
      * @param Tile[] $tile
      */
-    public function handle(array $tile, Target $target, Step $stepStruct) : void;
+    public function handle(array $tile, Target $target, Step $stepStruct): void;
 }

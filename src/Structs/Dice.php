@@ -28,34 +28,34 @@ class Dice extends Tile
         string $entryColor,
         string $entryDirection
     ) {
-        $this->germColor      = $germColor;
-        $this->germSize       = $germSize;
-        $this->germStyle      = $germStyle;
-        $this->entryColor     = $entryColor;
+        $this->germColor = $germColor;
+        $this->germSize = $germSize;
+        $this->germStyle = $germStyle;
+        $this->entryColor = $entryColor;
         $this->entryDirection = $entryDirection;
     }
 
-    public function getGermColor() : string
+    public function getGermColor(): string
     {
         return $this->germColor;
     }
 
-    public function getGermSize() : string
+    public function getGermSize(): string
     {
         return $this->germSize;
     }
 
-    public function getGermStyle() : string
+    public function getGermStyle(): string
     {
         return $this->germStyle;
     }
 
-    public function getEntryColor() : string
+    public function getEntryColor(): string
     {
         return $this->entryColor;
     }
 
-    public function getEntryDirection() : string
+    public function getEntryDirection(): string
     {
         return $this->entryDirection;
     }

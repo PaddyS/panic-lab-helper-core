@@ -6,5 +6,5 @@ namespace PanicLabCore\Services\Validators;
 
 interface ValidatorInterface
 {
-    public function validate(array $tile) : void;
+    public function validate(array $tile): void;
 }

@@ -14,7 +14,7 @@ class EntryTile extends Tile
         $this->color = $color;
     }
 
-    public function getColor() : string
+    public function getColor(): string
     {
         return $this->color;
     }

@@ -18,17 +18,17 @@ class EntryHydrator implements HydratorInterface
         $this->entryValidator = $entryValidator;
     }
 
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         return $type === 'entry';
     }
 
-    public function hydrate(array $tile) : Tile
+    public function hydrate(array $tile): Tile
     {
         return new EntryTile($tile['additional']['color']);
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         $this->entryValidator->validate($tile);
     }

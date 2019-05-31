@@ -14,7 +14,7 @@ class SwitchTile extends Tile
         $this->type = $type;
     }
 
-    public function getType() : string
+    public function getType(): string
     {
         return $this->type;
     }

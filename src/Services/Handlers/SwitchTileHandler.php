@@ -11,7 +11,7 @@ use PanicLabCore\Structs\Tile;
 
 class SwitchTileHandler implements TileHandlerInterface
 {
-    public function supports(Tile $tile) : bool
+    public function supports(Tile $tile): bool
     {
         return $tile instanceof SwitchTile;
     }
@@ -19,7 +19,7 @@ class SwitchTileHandler implements TileHandlerInterface
     /**
      * {@inheritdoc}
      */
-    public function handle(array $tiles, Target $target, Step $stepStruct) : void
+    public function handle(array $tiles, Target $target, Step $stepStruct): void
     {
         /** @var SwitchTile $tile */
         $tile = $tiles[$stepStruct->getCurrentIndex()];
@@ -27,7 +27,7 @@ class SwitchTileHandler implements TileHandlerInterface
         $this->change($tile->getType(), $target);
     }
 
-    public function change(string $switchType, Target $target) : void
+    public function change(string $switchType, Target $target): void
     {
         if ($switchType === 'color') {
             $this->switchColor($target);
@@ -44,7 +44,7 @@ class SwitchTileHandler implements TileHandlerInterface
         $this->switchStyle($target);
     }
 
-    public function switchColor(Target $target) : void
+    public function switchColor(Target $target): void
     {
         if ($target->getGermColor() === 'blue') {
             $target->setGermColor('orange');
@@ -53,7 +53,7 @@ class SwitchTileHandler implements TileHandlerInterface
         }
     }
 
-    public function switchSize(Target $target) : void
+    public function switchSize(Target $target): void
     {
         if ($target->getGermSize() === 'thick') {
             $target->setGermSize('thin');
@@ -62,7 +62,7 @@ class SwitchTileHandler implements TileHandlerInterface
         }
     }
 
-    public function switchStyle(Target $target) : void
+    public function switchStyle(Target $target): void
     {
         if ($target->getGermStyle() === 'dotted') {
             $target->setGermStyle('streaked');

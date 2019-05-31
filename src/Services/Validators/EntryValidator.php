@@ -16,7 +16,7 @@ class EntryValidator implements ValidatorInterface
         $this->entryColors = $entryColors;
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         Assert::keyExists($tile, 'additional');
 

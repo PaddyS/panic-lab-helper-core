@@ -13,15 +13,15 @@ interface CalcServiceInterface
     /**
      * @param Tile[] $tiles
      */
-    public function calculate(array $tiles, Dice $diceResult) : GermTile;
+    public function calculate(array $tiles, Dice $diceResult): GermTile;
 
-    public function prepare(Dice $diceResult) : void;
+    public function prepare(Dice $diceResult): void;
 
-    public function step() : GermTile;
+    public function step(): GermTile;
 
-    public function reverseTiles() : void;
+    public function reverseTiles(): void;
 
-    public function findStartIndex(string $entryColor) : int;
+    public function findStartIndex(string $entryColor): int;
 
-    public function isTargetTile(Tile $tile) : bool;
+    public function isTargetTile(Tile $tile): bool;
 }

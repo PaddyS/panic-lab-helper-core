@@ -16,7 +16,7 @@ class SwitchValidator implements ValidatorInterface
         $this->switchTypes = $switchTypes;
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         Assert::keyExists($tile, 'additional');
 

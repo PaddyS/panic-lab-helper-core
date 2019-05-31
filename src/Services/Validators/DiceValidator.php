@@ -37,14 +37,14 @@ class DiceValidator implements ValidatorInterface
         array $entryColors,
         array $entryDirections
     ) {
-        $this->germColors      = $germColors;
-        $this->germStyles      = $germStyles;
-        $this->germSizes       = $germSizes;
-        $this->entryColors     = $entryColors;
+        $this->germColors = $germColors;
+        $this->germStyles = $germStyles;
+        $this->germSizes = $germSizes;
+        $this->entryColors = $entryColors;
         $this->entryDirections = $entryDirections;
     }
 
-    public function validate(array $diceData) : void
+    public function validate(array $diceData): void
     {
         Assert::keyExists($diceData, 'germColor');
         Assert::keyExists($diceData, 'germSize');

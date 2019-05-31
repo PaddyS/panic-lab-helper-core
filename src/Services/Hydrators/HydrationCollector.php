@@ -6,32 +6,31 @@ namespace PanicLabCore\Services\Hydrators;
 
 use PanicLabCore\Services\Exceptions\InvalidTileTypeException;
 use PanicLabCore\Structs\Tile;
-use Traversable;
-use Webmozart\Assert\Assert;
 use function sprintf;
+use Webmozart\Assert\Assert;
 
 class HydrationCollector implements HydrationCollectorInterface
 {
     /** @var HydratorInterface[] */
     private $tileHydrators;
 
-    public function __construct(Traversable $tileHydrators)
+    public function __construct(\Traversable $tileHydrators)
     {
         $this->tileHydrators = $tileHydrators;
     }
 
-    public function supports(string $type) : bool
+    public function supports(string $type): bool
     {
         // Nothing to be done here
         return true;
     }
 
-    public function hydrate(array $tile) : Tile
+    public function hydrate(array $tile): Tile
     {
         $this->validate($tile);
 
         foreach ($this->tileHydrators as $tileHydrator) {
-            if (! $tileHydrator->supports($tile['type'])) {
+            if (!$tileHydrator->supports($tile['type'])) {
                 continue;
             }
 
@@ -48,7 +47,7 @@ class HydrationCollector implements HydrationCollectorInterface
         );
     }
 
-    public function validate(array $tile) : void
+    public function validate(array $tile): void
     {
         Assert::keyExists($tile, 'type');
     }
