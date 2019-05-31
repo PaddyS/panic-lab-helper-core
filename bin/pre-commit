@@ -8,17 +8,17 @@ function onExit {
 }
 trap onExit EXIT
 
-PHP_FILES="$(git diff --cached --name-only --diff-filter=ACMR HEAD | grep -E '^src/.*\.(php)$')"
+FILES="$(git diff --cached --name-only --diff-filter=ACMR HEAD | grep -E '^src/.*\.(php)$')"
 
 # exit on non-zero return code
 set -e
 
-if [[ -z "$PHP_FILES" ]]
+if [[ -z "FILES" ]]
 then
     exit 0
 fi
 
-UNSTAGED_FILES="$(git diff --name-only -- ${PHP_FILES})"
+UNSTAGED_FILES="$(git diff --name-only -- ${FILES})"
 
 if [[ -n "$UNSTAGED_FILES" ]]
 then
@@ -31,10 +31,20 @@ $UNSTAGED_FILES
     exit 1
 fi
 
-if [[ -n "$PHP_FILES" ]]
+if [[ -n "FILES" ]]
 then
-    # fix code style and update the commit
-    php vendor/bin/php-cs-fixer fix --config=.php_cs.dist --quiet -vv ${PHP_FILES}
+    for FILE in ${FILES}
+    do
+        php -l -d display_errors=0 "$FILE" 1> /dev/null
+    done
+
+    php vendor/bin/phpstan analyze --level 7 --no-progress src ${FILES}
 fi
 
-git add ${PHP_FILES}
+if [[ -n "FILES" ]]
+then
+    # fix code style and update the commit
+    php vendor/bin/php-cs-fixer fix --config=.php_cs.dist --quiet -vv ${FILES}
+fi
+
+git add ${FILES}

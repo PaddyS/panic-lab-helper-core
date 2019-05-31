@@ -6,12 +6,11 @@ namespace PanicLabCore\Services\Hydrators;
 
 use PanicLabCore\Services\Exceptions\InvalidTileTypeException;
 use PanicLabCore\Structs\Tile;
-use function sprintf;
 use Webmozart\Assert\Assert;
 
 class HydrationCollector implements HydrationCollectorInterface
 {
-    /** @var HydratorInterface[] */
+    /** @var \Traversable */
     private $tileHydrators;
 
     public function __construct(\Traversable $tileHydrators)
@@ -29,6 +28,7 @@ class HydrationCollector implements HydrationCollectorInterface
     {
         $this->validate($tile);
 
+        /** @var HydratorInterface $tileHydrator */
         foreach ($this->tileHydrators as $tileHydrator) {
             if (!$tileHydrator->supports($tile['type'])) {
                 continue;
@@ -40,7 +40,7 @@ class HydrationCollector implements HydrationCollectorInterface
         }
 
         throw new InvalidTileTypeException(
-            sprintf(
+            \sprintf(
                 'The provided type \'%s\’ seems to be invalid. No matching hydrator found.',
                 $tile['type']
             )

@@ -9,7 +9,7 @@ use PanicLabCore\Structs\Target;
 
 class TileHandlerCollector implements TileHandlerCollectorInterface
 {
-    /** @var TileHandlerInterface[] */
+    /** @var \Traversable */
     private $tileHandlers;
 
     public function __construct(\Traversable $tileHandlers)
@@ -22,6 +22,7 @@ class TileHandlerCollector implements TileHandlerCollectorInterface
      */
     public function handle(array $tiles, Target $target, Step $stepStruct): void
     {
+        /** @var TileHandlerInterface $tileHandler */
         foreach ($this->tileHandlers as $tileHandler) {
             $tile = $tiles[$stepStruct->getCurrentIndex()];
             if (!$tileHandler->supports($tile)) {

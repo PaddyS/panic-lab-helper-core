@@ -13,7 +13,7 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",
-        "phpstan/phpstan": "^0.11.6",
+        "phpstan/phpstan": "^0.11.8",
         "phpunit/phpunit": "^8",
         "infection/infection": "^0.13.1",
         "friendsofphp/php-cs-fixer": "^2.15",
