@@ -1,6 +1,6 @@
 {
     "name": "paddys/panic-lab-helper-core",
-    "description": "Helper for the game \"PanicLab\" by Gigamic",
+    "description": "Calculation helper for the game \"PanicLab\" by Gigamic",
     "license": "MIT",
     "keywords": [ "panic", "lab", "paniclab", "game", "gigamic" ],
     "require": {
