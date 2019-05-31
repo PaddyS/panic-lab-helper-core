@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/PaddyS/panic-lab-helper-core.svg?branch=master)](https://travis-ci.com/PaddyS/panic-lab-helper-core)
+
 <h1 align="center">PanicLab Helper Core</h1>
 
 This repository is a helper to calculate the proper result for the game [PanicLab](http://en.gigamic.com/game/panic-lab) by @Gigamic.
