@@ -1,10 +1,11 @@
 language: php
-
 php:
-  - 7.3
-
+- 7.3
 install:
-  - composer install
-
+- composer install
 script:
-  - ./vendor/phpunit/phpunit/phpunit
+- "./vendor/bin/phpunit"
+- "./vendor/bin/infection"
+env:
+  global:
+  - secure: is/vVU0OAVhUWBPn46Rw0bIER9Hkd6nYoJW2JOFI4NZuAPKqE2rMpBpQM0fGMi+YX1TbViaCeyMK3cQ8Z2b7vY1l6Y/45NzgkBNWyFyK1yanPj15JZE0qXctOk5Vc40a+DEANyarRkV9ktvIlJCM133czCAsyYuOP5Ka5OUmVF6CFrJ1h7JzprTk1TWurQgyOTlgOm70pIr+1emAyvVmXAfWZ9jpVAJ7PO1rqOy0nLpJ46GYPAp9Ye+BCHeGERh2xGaXyJWANEfEm4p7QPl2LJHOM/+6VGCT0k7CqghEmI5AEOkSC78Em5E1Dj1X3HzQKsr9jC07i8v0rqNgsVnw8UviHJHGkulrGFs9EsTbuTqNjow88jTLC79PxVOyLgmy08/MmPc1P9WJp9K5wnRa5nTpSKvU65WMEjPKokcN6VsNLqMYRpS92Q60L3meCjiB+44SSfEc5PHvTj/SThZ6VhHUQYbGSi6MDxpjYJ56S/xLQ1iV8nNPRgYR7C8Ef7DX7pprPQFctuvpunSc4ghgo6ock16jVaEzbMir3JyxpW2a12zoyC69+v29N7vNHIuUBhSPpFEwOpMAXrS2NAIwY3TPAxi6OHfk4Z8bfEm0+5prTZOnxYehFCIzW9pouWt/7tuvCGzgFiZ986rnVAKZLJ+pwtYeVJzPhKAIGYAkVRg=
