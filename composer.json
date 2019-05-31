@@ -29,13 +29,15 @@
             "PanicLabCore\\Tests\\": "tests/"
         }
     },
-    "conflict": {
-        "symfony/symfony": "*"
-    },
     "authors": [
         {
             "name": "Patrick Stahl",
             "role": "Developer"
         }
-    ]
+    ],
+    "scripts": {
+        "post-update-cmd": [
+            "ln -sf ../../bin/pre-commit .git/hooks/pre-commit"
+        ]
+    }
 }

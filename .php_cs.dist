@@ -17,7 +17,7 @@ use PhpCsFixerCustomFixers\Fixers;
 
 $finder = Finder::create()
     ->in(__DIR__ . '/src')
-    ->name('*.php'));
+    ->name('*.php');
 
 return Config::create()
     ->setRiskyAllowed(true)
