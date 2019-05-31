@@ -12,6 +12,5 @@ All rights belong to their respective owners.*
 If you still wish to use this repository, require it using [Composer](https://getcomposer.org/).
 
 ```
-    composer require --dev paddys/panic-lab-helper-core
+composer require --dev paddys/panic-lab-helper-core
 ```
-This will install the code into the `bin-dir`, whose default is `vendor/bin`.
