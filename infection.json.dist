@@ -1,0 +1,27 @@
+{
+    "timeout": 10,
+    "source": {
+        "directories": [
+            "src"
+        ],
+        "excludes": [
+            "Kernel.php"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "@cast": {
+            "ignore": [
+                "*"
+            ]
+        },
+        "@removal": {
+            "ignore": [
+                "PanicLabCore\\DependencyInjection\\DebugCompilerPass"
+            ]
+        }
+    }
+}

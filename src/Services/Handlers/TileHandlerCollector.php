@@ -7,7 +7,6 @@ namespace PanicLabCore\Services\Handlers;
 use PanicLabCore\Structs\Step;
 use PanicLabCore\Structs\Target;
 use Traversable;
-use function iterator_to_array;
 
 class TileHandlerCollector implements TileHandlerCollectorInterface
 {
@@ -16,7 +15,7 @@ class TileHandlerCollector implements TileHandlerCollectorInterface
 
     public function __construct(Traversable $tileHandlers)
     {
-        $this->tileHandlers = iterator_to_array($tileHandlers, false);
+        $this->tileHandlers = $tileHandlers;
     }
 
     /**

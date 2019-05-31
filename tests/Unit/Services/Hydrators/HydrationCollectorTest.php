@@ -62,14 +62,33 @@ class HydrationCollectorTest extends TestCase
         ]);
     }
 
-    public function testThrowsExceptionTypeMissing() : void
+    public function testHydrateThrowsExceptionTypeMissing() : void
     {
+        $hydrationCollector = $this->getInstance();
+
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Expected the key "type" to exist.');
 
+        $hydrationCollector->hydrate([
+            'notType' => 'invalid',
+            'additional' => [
+                'type' => 'color'
+            ]
+        ]);
+    }
 
-        $this->getInstance()->validate([
-            'notType' => 'invalid'
+    public function testHydrateThrowsExceptionTileHydratorNoticesInvalidTile() : void
+    {
+        $hydrationCollector = $this->getInstance();
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Expected one of: "color", "size", "style". Got: "foo"');
+
+        $hydrationCollector->hydrate([
+            'type' => 'switch',
+            'additional' => [
+                'type' => 'foo'
+            ]
         ]);
     }
 

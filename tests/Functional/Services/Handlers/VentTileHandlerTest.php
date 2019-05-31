@@ -66,6 +66,30 @@ class VentTileHandlerTest extends KernelTestCase
         self::assertSame(4, $step->getCurrentIndex());
     }
 
+    public function testHandleStartsAtZero() : void
+    {
+        $ventTileHandler = $this->getInstance();
+        $tileHydrator = self::$container->get(Hydrator::class);
+
+        $tiles = $tileHydrator->hydrate([
+            [
+                'type' => 'switch',
+                'additional' => [
+                    'type' => 'style'
+                ]
+            ]
+        ]);
+        $step = new Step(4, 0, 10000);
+
+        $ventTileHandler->handle(
+            $tiles,
+            new Target('orange', 'thick', 'dotted'),
+            $step
+        );
+
+        self::assertSame(0, $step->getCurrentIndex());
+    }
+
     private function getInstance() : VentTileHandler
     {
         return new VentTileHandler();

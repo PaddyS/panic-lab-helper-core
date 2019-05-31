@@ -8,7 +8,6 @@ use PanicLabCore\Services\Exceptions\InvalidTileTypeException;
 use PanicLabCore\Structs\Tile;
 use Traversable;
 use Webmozart\Assert\Assert;
-use function iterator_to_array;
 use function sprintf;
 
 class HydrationCollector implements HydrationCollectorInterface
@@ -18,7 +17,7 @@ class HydrationCollector implements HydrationCollectorInterface
 
     public function __construct(Traversable $tileHydrators)
     {
-        $this->tileHydrators = iterator_to_array($tileHydrators, false);
+        $this->tileHydrators = $tileHydrators;
     }
 
     public function supports(string $type) : bool
