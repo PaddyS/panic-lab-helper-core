@@ -1,0 +1,32 @@
+name: Infection PHP
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        php: [ '7.3', '7.4' ]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone project
+        uses: actions/checkout@v2
+        with:
+          path: ./
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          tools: composer, prestissimo
+          coverage: none
+
+      - name: Composer install
+        run: composer install --no-interaction --optimize-autoloader --no-suggest --no-scripts
+
+      - name: Run PHPUnit
+        uses: pxgamer/phpunit-action@master
